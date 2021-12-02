@@ -1,0 +1,12 @@
+{
+    "id": "communities",
+    "name": "Communities",
+    "description": "A module for HumHub providing a hierarchical order of spaces.",
+    "keywords": [
+    ],
+    "version": "0.1",
+    "humhub": {
+        "minVersion": "1.2"
+    },
+    "screenshots": ["assets/screen1.jpg"]
+}
