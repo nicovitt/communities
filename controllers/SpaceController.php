@@ -16,7 +16,7 @@ class SpaceController extends ContentContainerController
     {
         parent::init();
 
-        if($this->contentContainer instanceof Space) {
+        if ($this->contentContainer instanceof Space) {
             $this->subLayout = "@humhub/modules/space/views/space/_layout";
         }
     }
@@ -52,7 +52,7 @@ class SpaceController extends ContentContainerController
             $this->view->saved();
             return $this->redirect(['settings']);
         }
-        
+
         return $this->render('index', ['contentContainer' => $this->contentContainer, 'model' => $form,]);
     }
 }

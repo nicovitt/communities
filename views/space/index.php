@@ -1,9 +1,8 @@
 <?php
+/* @var $model VittITServices\humhub\modules\communities\models\forms\SpaceSettingsForm */
 
-use humhub\modules\content\widgets\richtext\RichTextField;
 use humhub\modules\space\models\Space;
 use humhub\modules\space\modules\manage\widgets\DefaultMenu;
-use humhub\modules\space\widgets\SpaceNameColorInput;
 use humhub\modules\ui\form\widgets\ActiveForm;
 use humhub\widgets\Button;
 use humhub\libs\Html;
@@ -23,12 +22,12 @@ use humhub\libs\Html;
 
     <div class="panel-body">
         <p>Legen Sie hier fest, zu welchen Communities dieser Space zugeordnet werden soll.</p>
-        <?php $form = ActiveForm::begin(['options' => ['id' => 'spaceIndexForm'], 'enableClientValidation' => false]); ?>
+        <?php $form = ActiveForm::begin(['options' => ['id' => 'spaceIndexForm'], 'enableClientValidation' => true]); ?>
         <?= humhub\modules\space\widgets\SpacePickerField::widget([
             'form' => $form,
             'model' => $model,
             'attribute' => 'communitiesGuid',
-            'selection' => $model->spaces
+            'selection' => $model->spaces,
         ]) ?>
 
         <?= Button::primary(Yii::t('base', 'Save'))->submit(); ?>

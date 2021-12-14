@@ -22,11 +22,7 @@ class SpaceSettingsForm extends Model
         $this->communities = Community::findAll(['child_id' => $this->contentContainerId]);
         foreach ($this->communities as $community) {
             //Get the space-object to make the picker work.
-            $tmpspace = Space::findOne(['guid' => $community->parent_id]);
-            if(!is_null($tmpspace)){
-                array_push($this->spaces, $tmpspace);
-            }
-            // array_push($this->communitiesGuid, $community->parent_id);
+            $this->findspaces($community);
         }
     }
 
@@ -44,8 +40,8 @@ class SpaceSettingsForm extends Model
     {
         return [
             ['communitiesGuid', 'checkSpaceGuid'],
-            [['child_id'], 'required', 'string', 'max' => 45, 'min' => 2],
-            [['parent_id'], 'required', 'string', 'max' => 45, 'min' => 2],
+            // [['child_id'], 'required', 'string', 'max' => 45, 'min' => 2],
+            // [['parent_id'], 'required', 'string', 'max' => 45, 'min' => 2],
         ];
     }
 
@@ -68,6 +64,7 @@ class SpaceSettingsForm extends Model
      */
     public function checkSpaceGuid($attribute, $params)
     {
+        // $this->spaces = Space::find()->where(['not in', 'guid', $contentContainerId])->all();
         if (!empty($this->communitiesGuid)) {
             foreach ($this->communitiesGuid as $spaceGuid) {
                 if ($spaceGuid != "") {
@@ -82,26 +79,30 @@ class SpaceSettingsForm extends Model
 
     public function save()
     {
-        // Remove all instances if no space is selected
-        if (empty($this->communitiesGuid)) {
-            Community::deleteAll(['child_id' => $this->contentContainerId]);
-        } else {
+        // $community = Community::findOne(['child_id' => $this->contentContainerId, 'parent_id' => $communitiesguid]);
+        // Remove all instances to populate it afterwards with the selected spaces.
+        Community::deleteAll(['child_id' => $this->contentContainerId]);
+        $this->spaces = [];
+        if (!empty($this->communitiesGuid)) {
             foreach ($this->communitiesGuid as $communitiesguid) {
-                $space = Community::findOne(['child_id' => $this->contentContainerId, 'parent_id' => $communitiesguid]);
-                if (is_null($space)) {
+                // Do not add the space to itself.
+                if (($communitiesguid != $this->contentContainerId) && $this->validate()) {
                     // Add new Community
-                    if($this->validate()){
-                        $space = new Community();
-                        $space->child_id = $this->contentContainerId;
-                        $space->parent_id = $communitiesguid;
-                        $x = $space->save();
-                    }
-                    return false;
-                } else {
-                    // Edit existing Community
+                    $community = new Community();
+                    $community->child_id = $this->contentContainerId;
+                    $community->parent_id = $communitiesguid;
+                    $community->save();
+                    $this->findspaces($community);
                 }
             }
         }
-        return true;
+    }
+
+    private function findspaces($community)
+    {
+        $space = Space::findOne(['guid' => $community->parent_id]);
+        if (!is_null($space)) {
+            array_push($this->spaces, $space);
+        }
     }
 }

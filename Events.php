@@ -29,7 +29,7 @@ class Events
      */
     public static function onSpaceSettingsInit(Event $event)
     {
-        
+
         // $space = $event->sender->space;
 
         // if ($space->isAdmin()) {
@@ -45,7 +45,7 @@ class Events
                 'label' => Yii::t('CommunitiesModule.base', 'Communities'),
                 'url' => $event->sender->space->createUrl(urlHelper::toSpaceSettings()),
                 'sortOrder' => 200,
-                'isActive' => MenuLink::isActiveState('communities', 'manage')
+                'isActive' => MenuLink::isActiveState('communities', 'space', 'index')
             ]);
         }
     }

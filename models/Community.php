@@ -54,8 +54,8 @@ class Community extends ActiveRecord
     public function rules()
     {
         $rules = [
-            [['child_id'], 'required', 'string', 'max' => 45, 'min' => 2],
-            [['parent_id'], 'required', 'string', 'max' => 45, 'min' => 2],
+            // [['child_id'], 'required', 'string', 'max' => 45, 'min' => 2],
+            // [['parent_id'], 'required', 'string', 'max' => 45, 'min' => 2],
         ];
 
         return $rules;
