@@ -3,12 +3,13 @@
 namespace  VittITServices\humhub\modules\communities;
 
 use Yii;
-use yii\base\WidgetEvent;
 use yii\base\Event;
 use yii\helpers\Url;
 use humhub\modules\space\models\Space;
 use humhub\modules\ui\menu\MenuLink;
+use humhub\modules\stream\widgets\StreamViewer;
 use VittITServices\humhub\modules\communities\helpers\urlHelper;
+use VittITServices\humhub\modules\communities\models\Community;
 
 class Events
 {
@@ -119,5 +120,31 @@ class Events
                 'sortOrder' => 99999,
             ]);
         }
+    }
+
+    /**
+     * Defines what to do when a task is displayed on the wall.
+     *
+     * @param $event of type yii\base\WidgetEvent
+     */
+    public static function onCreateWallEntry($event)
+    {
+        if ((get_class($event->sender) != StreamViewer::class) || is_null($event->sender->contentContainer) || (get_class($event->sender->contentContainer) != Space::class)) {
+            return $event;
+        }
+
+        // Check if contentcontainerid has children in communities db-table
+        $contentcontainerids = [];
+        $communities = Community::findAll(['parent_id' => $event->sender->contentContainer->guid]);
+        if (count($communities) > 0) {
+            foreach ($communities as $community) {
+                // If so integrate events from children in stream
+                array_push($contentcontainerids, $community->child_id);
+            }
+            $event->sender->streamActionParams["ids"] = $contentcontainerids;
+            $event->sender->streamAction = urlHelper::toModifiedStreamAction();
+        }
+
+        return $event;
     }
 }

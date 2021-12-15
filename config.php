@@ -3,8 +3,10 @@
 use VittITServices\humhub\modules\communities\Events;
 use humhub\modules\admin\widgets\AdminMenu;
 use humhub\widgets\TopMenu;
+use humhub\components\Widget;
 use humhub\components\ModuleManager;
 use humhub\modules\space\modules\manage\widgets\DefaultMenu;
+use humhub\modules\stream\widgets\StreamViewer;
 
 return [
 	'id' => 'communities',
@@ -17,10 +19,10 @@ return [
 			'callback' => [Events::class, 'afterModuleEnabled']
 		],
 		[
-            'class' => DefaultMenu::class, 
-            'event' => DefaultMenu::EVENT_INIT, 
-            'callback' => [Events::class, 'onSpaceSettingsInit']
-        ],
+			'class' => DefaultMenu::class,
+			'event' => DefaultMenu::EVENT_INIT,
+			'callback' => [Events::class, 'onSpaceSettingsInit']
+		],
 		[
 			'class' => TopMenu::class,
 			'event' => TopMenu::EVENT_INIT,
@@ -30,6 +32,11 @@ return [
 			'class' => AdminMenu::class,
 			'event' => AdminMenu::EVENT_INIT,
 			'callback' => [Events::class, 'onAdminMenuInit']
+		],
+		[
+			'class' => StreamViewer::class,
+			'event' => Widget::EVENT_BEFORE_RUN,
+			'callback' => [Events::class, 'onCreateWallEntry']
 		],
 	],
 ];

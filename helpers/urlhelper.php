@@ -9,6 +9,7 @@ namespace VittITServices\humhub\modules\communities\helpers;
 class urlHelper extends \yii\helpers\Url
 {
     const ROUTE_SPACE_SETTINGS = '/communities/space';
+    const ROUTE_MODIFIED_STREAM_ACTION = '/communities/space/communitystream';
     const ROUTE_ADMIN = '/communities/admin';
 
     function domainname()
@@ -21,10 +22,10 @@ class urlHelper extends \yii\helpers\Url
         return static::ROUTE_SPACE_SETTINGS;
     }
 
-    // public static function toSpace()
-    // {
-    //     return static::to([static::ROUTE_SPACE]);
-    // }
+    public static function toModifiedStreamAction()
+    {
+        return static::ROUTE_MODIFIED_STREAM_ACTION;
+    }
 
     // public static function toSpaceWithMessage(string $baseurl, string $message)
     // {

@@ -8,6 +8,7 @@ use humhub\modules\content\widgets\richtext\RichText;
 use humhub\modules\content\components\ContentContainerController;
 use humhub\modules\space\models\Space;
 use VittITServices\humhub\modules\communities\models\forms\SpaceSettingsForm;
+use  VittITServices\humhub\modules\communities\components\CommunitiesContentContainerStream;
 
 class SpaceController extends ContentContainerController
 {
@@ -21,6 +22,16 @@ class SpaceController extends ContentContainerController
         }
     }
 
+    public function actions()
+    {
+        return [
+            'communitystream' => [
+                'class' => CommunitiesContentContainerStream::class,
+                'contentContainerIds' => $_GET["ids"]
+            ]
+        ];
+    }
+
     /**
      * Renders the index view for the module
      *
@@ -28,24 +39,6 @@ class SpaceController extends ContentContainerController
      */
     public function actionIndex()
     {
-        // $space = $this->contentContainer;
-        // $space->scenario = 'edit';
-
-        // if ($space->load(Yii::$app->request->post()) && $space->validate() && $space->save()) {
-        //     RichText::postProcess($space->about, $space);
-        //     $this->view->saved();
-        //     return $this->redirect($space->createUrl('index'));
-        // }
-
-        // $model = new Topic($this->contentContainer);
-
-        // if ($model->load(Yii::$app->request->post()) && $model->save()) {
-        //     $this->view->saved();
-        // }
-
-        // if ($model->hasErrors()) {
-        //     $this->view->error($model->getFirstError('name'));
-        // }
         $form = new SpaceSettingsForm($this->contentContainer->guid);
 
         if ($form->load(Yii::$app->request->post()) && $form->validate() && $form->save()) {
