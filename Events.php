@@ -1,6 +1,6 @@
 <?php
 
-namespace  VittITServices\humhub\modules\communities;
+namespace VittITServices\humhub\modules\communities;
 
 use Yii;
 use yii\base\Event;
@@ -8,8 +8,8 @@ use yii\helpers\Url;
 use humhub\modules\space\models\Space;
 use humhub\modules\ui\menu\MenuLink;
 use humhub\modules\stream\widgets\StreamViewer;
-use VittITServices\humhub\modules\communities\helpers\urlHelper;
 use VittITServices\humhub\modules\communities\models\Community;
+use VittITServices\humhub\modules\communities\helpers\Url as urlManager;
 
 class Events
 {
@@ -44,7 +44,7 @@ class Events
         if ($event->sender->space->isAdmin()) {
             $event->sender->addItem([
                 'label' => Yii::t('CommunitiesModule.base', 'Communities'),
-                'url' => $event->sender->space->createUrl(urlHelper::toSpaceSettings()),
+                'url' => $event->sender->space->createUrl(urlManager::toSpaceSettings()),
                 'sortOrder' => 200,
                 'isActive' => MenuLink::isActiveState('communities', 'space', 'index')
             ]);
@@ -113,7 +113,7 @@ class Events
 
             $event->sender->addItem([
                 'label' => 'Communities',
-                'url' => $space->createUrl(urlHelper::toSpaceSettings()),
+                'url' => $space->createUrl(urlManager::toSpaceSettings()),
                 'group' => 'manage',
                 'icon' => '<i class="fa fa-sitemap"></i>',
                 'isActive' => (Yii::$app->controller->module && Yii::$app->controller->module->id == 'communities' && Yii::$app->controller->id == 'admin'),
@@ -142,7 +142,7 @@ class Events
                 array_push($contentcontainerids, $community->child_id);
             }
             $event->sender->streamActionParams["ids"] = $contentcontainerids;
-            $event->sender->streamAction = urlHelper::toModifiedStreamAction();
+            $event->sender->streamAction = urlManager::toModifiedStreamAction();
         }
 
         return $event;

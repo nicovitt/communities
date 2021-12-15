@@ -6,7 +6,7 @@ namespace VittITServices\humhub\modules\communities\helpers;
 /**
  * Class Url
  */
-class urlHelper extends \yii\helpers\Url
+class URL extends \yii\helpers\Url
 {
     const ROUTE_SPACE_SETTINGS = '/communities/space';
     const ROUTE_MODIFIED_STREAM_ACTION = '/communities/space/communitystream';
@@ -14,7 +14,7 @@ class urlHelper extends \yii\helpers\Url
 
     function domainname()
     {
-        return urlHelper::base(true);
+        return URL::base(true);
     }
 
     public static function toSpaceSettings()
