@@ -10,16 +10,21 @@ use VittITServices\humhub\modules\communities\permissions\ManageCommunities;
 class Module extends \humhub\components\Module
 {
     /**
-    * @inheritdoc
-    */
+     * @inheritdoc
+     */
+    public $resourcesPath = 'resources';
+
+    /**
+     * @inheritdoc
+     */
     public function getConfigUrl()
     {
         return Url::to(['/communities/admin']);
     }
 
     /**
-    * @inheritdoc
-    */
+     * @inheritdoc
+     */
     public function disable()
     {
         // Cleanup all module data, don't remove the parent::disable()!!!
