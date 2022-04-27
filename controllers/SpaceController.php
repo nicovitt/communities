@@ -9,6 +9,7 @@ use humhub\modules\content\components\ContentContainerController;
 use humhub\modules\space\models\Space;
 use VittITServices\humhub\modules\communities\models\forms\SpaceSettingsForm;
 use  VittITServices\humhub\modules\communities\components\CommunitiesContentContainerStream;
+use VittITServices\humhub\modules\communities\components\CommunityDirectoryQuery;
 
 class SpaceController extends ContentContainerController
 {
@@ -39,6 +40,7 @@ class SpaceController extends ContentContainerController
      */
     public function actionIndex()
     {
+        $commDirectoryQuery = new CommunityDirectoryQuery();
         $form = new SpaceSettingsForm($this->contentContainer->guid);
 
         if ($form->load(Yii::$app->request->post()) && $form->validate() && $form->save()) {
@@ -46,6 +48,6 @@ class SpaceController extends ContentContainerController
             return $this->redirect(['settings']);
         }
 
-        return $this->render('index', ['contentContainer' => $this->contentContainer, 'model' => $form,]);
+        return $this->render('index', ['contentContainer' => $this->contentContainer, 'model' => $form, 'communities' => $commDirectoryQuery,]);
     }
 }

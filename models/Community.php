@@ -12,6 +12,7 @@ use humhub\modules\content\components\ContentContainerActiveRecord;
 use humhub\modules\space\components\UrlValidator;
 use humhub\modules\search\interfaces\Searchable;
 use humhub\modules\space\models\Space;
+use VittITServices\humhub\modules\communities\components\ActiveQueryCommunity;
 use yii\db\ActiveRecord;
 use Yii;
 
@@ -21,6 +22,7 @@ use Yii;
  * @property integer $id
  * @property string $child_id
  * @property string $parent_id
+ * @property string $alias_name
  *
  */
 class Community extends ActiveRecord
@@ -69,7 +71,8 @@ class Community extends ActiveRecord
         return [
             'id' => 'ID',
             'child_id' => 'Kindelement',
-            'parent_id' => 'Community'
+            'parent_id' => 'Community',
+            'alias_name' => 'Aliasname'
         ];
     }
 
@@ -125,5 +128,14 @@ class Community extends ActiveRecord
         // ]));
 
         return parent::beforeDelete();
+    }
+
+    /**
+     * @inheritdoc
+     * @return ActiveQuerySpace
+     */
+    public static function find()
+    {
+        return new ActiveQueryCommunity(get_called_class());
     }
 }

@@ -16,6 +16,7 @@ class m210623_192043_communities_initial extends Migration
             'id' => $this->primaryKey(),
             'child_id' => 'varchar(45) DEFAULT NULL',
             'parent_id' => 'varchar(45) DEFAULT NULL',
+            'alias_name' => 'varchar(200) DEFAULT NULL',
         ], '');
 
         // creates index for column `child_id`
@@ -51,6 +52,13 @@ class m210623_192043_communities_initial extends Migration
         //     'guid',
         //     'CASCADE'
         // );
+
+        // creates index for column `alias_name`
+        $this->createIndex(
+            'idx-community-alias_name',
+            'communities_community',
+            'alias_name'
+        );
     }
 
     /**

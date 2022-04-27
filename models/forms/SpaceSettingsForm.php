@@ -91,6 +91,10 @@ class SpaceSettingsForm extends Model
                     $community = new Community();
                     $community->child_id = $this->contentContainerId;
                     $community->parent_id = $communitiesguid;
+
+                    $space = \humhub\modules\space\models\Space::findOne(['guid' => $communitiesguid]);
+                    $community->alias_name = $space->name;
+
                     $community->save();
                     $this->findspaces($community);
                 }

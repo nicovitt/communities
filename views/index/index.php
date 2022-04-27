@@ -1,9 +1,17 @@
 <?php
 
 use humhub\widgets\Button;
+use humhub\assets\DirectoryAsset;
+use humhub\modules\space\models\Space;
+use VittITServices\humhub\modules\communities\views\CommunityDirectoryCard;
+use VittITServices\humhub\modules\communities\views\space\SpaceInfoCard;
 
 // Register our module assets, this could also be done within the controller
 \VittITServices\humhub\modules\communities\assets\Assets::register($this);
+
+/* @var $this View */
+/* @var $spaces SpaceDirectoryQuery */
+// DirectoryAsset::register($this);
 
 $displayName = (Yii::$app->user->isGuest) ? Yii::t('CommunitiesModule.base', 'Guest') : Yii::$app->user->getIdentity()->displayName;
 
@@ -14,12 +22,35 @@ $this->registerJsConfig("communities", [
         'hello' => Yii::t('CommunitiesModule.base', 'Hi there {name}!', ["name" => $displayName])
     ]
 ])
-
 ?>
 
-<div class="panel-heading"><strong>Communities</strong> <?= Yii::t('CommunitiesModule.base', 'overview') ?></div>
+<div class="row cards">
+    <?php if (!$communities->exists()): ?>
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <strong><?= Yii::t('CommunitiesModule.base', 'No communities found!'); ?></strong><br/>
+                <?= Yii::t('CommunitiesModule.base', 'Try adding your spaces into new communites.'); ?>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
 
-<div class="panel-body">
-    <p><?= Yii::t('CommunitiesModule.base', 'Hello World!') ?></p>
-
-    <?=  Button::primary(Yii::t('CommunitiesModule.base', 'Say Hello!'))->action("communities.hello")->loader(false); ?></div>
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <?php foreach ($communities->all() as $community) : ?>
+                <div class="row-item-body">
+                <li role="separator" class="divider"><strong class="row-item-title"><?= "$community->alias_name Community"; ?></strong></li>
+                    <div class="col-md-12">
+                        <?php if ($community->child_id != "") : ?>
+                            <?= SpaceInfoCard::widget(['space' => Space::findOne(['guid' => $community->child_id])]); ?>
+                        <?php endif; ?>
+                    </div>
+                </div>
+                <div class="divider"><br></br></div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+</div>
