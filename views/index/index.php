@@ -1,17 +1,13 @@
 <?php
 
-use humhub\widgets\Button;
-use humhub\assets\DirectoryAsset;
 use humhub\modules\space\models\Space;
-use VittITServices\humhub\modules\communities\views\CommunityDirectoryCard;
 use VittITServices\humhub\modules\communities\views\space\SpaceInfoCard;
 
 // Register our module assets, this could also be done within the controller
 \VittITServices\humhub\modules\communities\assets\Assets::register($this);
 
 /* @var $this View */
-/* @var $spaces SpaceDirectoryQuery */
-// DirectoryAsset::register($this);
+/* @var $communities CommunityDirectoryQuery */
 
 $displayName = (Yii::$app->user->isGuest) ? Yii::t('CommunitiesModule.base', 'Guest') : Yii::$app->user->getIdentity()->displayName;
 

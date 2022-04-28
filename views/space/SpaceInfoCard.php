@@ -11,7 +11,7 @@ use humhub\components\Widget;
 use humhub\modules\space\models\Space;
 
 /**
- * SpaceInfoCard shows a space on spaces directory
+ * SpaceInfoCard shows a space on communities directory
  * 
  * @since 1.9
  * @author Luke
