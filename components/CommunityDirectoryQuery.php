@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @link https://www.humhub.org/
  * @copyright Copyright (c) 2021 HumHub GmbH & Co. KG
@@ -16,7 +17,7 @@ use yii\data\Pagination;
 /**
  * CommunityDirectoryQuery is used to query Community records on the Communities page.
  *
- * @author luke
+ * @author Nico Vitt
  */
 class CommunityDirectoryQuery extends ActiveQueryCommunity
 {
@@ -38,5 +39,4 @@ class CommunityDirectoryQuery extends ActiveQueryCommunity
 
         $this->visible();
     }
-
 }
