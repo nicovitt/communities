@@ -9,15 +9,21 @@ use VittITServices\humhub\modules\communities\views\space\SpaceInfoCard;
 /* @var $this View */
 /* @var $communities CommunityDirectoryQuery */
 
-$displayName = (Yii::$app->user->isGuest) ? Yii::t('CommunitiesModule.base', 'Guest') : Yii::$app->user->getIdentity()->displayName;
+$displayName = Yii::$app->user->isGuest
+  ? Yii::t('CommunitiesModule.base', 'Guest')
+  : Yii::$app->user->getIdentity()->displayName;
 
 // Add some configuration to our js module
 $this->registerJsConfig("communities", [
-    'username' => (Yii::$app->user->isGuest) ? $displayName : Yii::$app->user->getIdentity()->username,
-    'text' => [
-        'hello' => Yii::t('CommunitiesModule.base', 'Hi there {name}!', ["name" => $displayName])
-    ]
-])
+  'username' => Yii::$app->user->isGuest
+    ? $displayName
+    : Yii::$app->user->getIdentity()->username,
+  'text' => [
+    'hello' => Yii::t('CommunitiesModule.base', 'Hi there {name}!', [
+      "name" => $displayName,
+    ]),
+  ],
+]);
 ?>
 
 <div class="row cards">
@@ -25,8 +31,14 @@ $this->registerJsConfig("communities", [
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-body">
-                <strong><?= Yii::t('CommunitiesModule.base', 'No communities found!'); ?></strong><br/>
-                <?= Yii::t('CommunitiesModule.base', 'Try adding your spaces into new communites.'); ?>
+                <strong><?= Yii::t(
+                  'CommunitiesModule.base',
+                  'No communities found!'
+                ) ?></strong><br/>
+                <?= Yii::t(
+                  'CommunitiesModule.base',
+                  'Try adding your spaces into new communites.'
+                ) ?>
             </div>
         </div>
     </div>
@@ -35,12 +47,16 @@ $this->registerJsConfig("communities", [
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-body">
-                <?php foreach ($communities->all() as $community) : ?>
+                <?php foreach ($communities->all() as $community): ?>
                 <div class="row-item-body">
-                <li role="separator" class="divider"><strong class="row-item-title"><?= "$community->alias_name Community"; ?></strong></li>
+                <li role="separator" class="divider"><strong class="row-item-title"><?= "$community->alias_name Community" ?></strong></li>
                     <div class="col-md-12">
-                        <?php if ($community->child_id != "") : ?>
-                            <?= SpaceInfoCard::widget(['space' => Space::findOne(['guid' => $community->child_id])]); ?>
+                        <?php if ($community->child_id != ""): ?>
+                            <?= SpaceInfoCard::widget([
+                              'space' => Space::findOne([
+                                'guid' => $community->child_id,
+                              ]),
+                            ]) ?>
                         <?php endif; ?>
                     </div>
                 </div>

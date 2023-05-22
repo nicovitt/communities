@@ -2,29 +2,29 @@
 
 namespace VittITServices\humhub\modules\communities\controllers;
 
+use Yii;
+use yii\helpers\Url;
 use humhub\components\Controller;
+use humhub\modules\content\components\ContentContainerController;
 use VittITServices\humhub\modules\communities\components\CommunityDirectoryQuery;
-use VittITServices\humhub\modules\communities\models\Community;
-use VittITServices\humhub\modules\communities\models\forms\SpaceSettingsForm;
+use humhub\modules\space\components\SpaceDirectoryQuery;
 
 class IndexController extends Controller
 {
+  /**
+   * @inheritdoc
+   */
+  public $subLayout = '@communities/views/layouts/default';
 
-    public $subLayout = "@communities/views/layouts/default";
-
-    /**
-     * Renders the index view for the module
-     *
-     * @return string
-     */
-    public function actionIndex()
-    {
-        $commDirectoryQuery = new CommunityDirectoryQuery();
-    
-        // return $this->render('index');
-
-        return $this->render('index', ['communities' => $commDirectoryQuery,]);
-    }
-
+  /**
+   * Renders the index view for the module
+   *
+   * @return string
+   */
+  public function actionIndex()
+  {
+    $commDirectoryQuery = new CommunityDirectoryQuery();
+    // return $this->render('index');
+    return $this->render('index', ['communities' => $commDirectoryQuery]);
+  }
 }
-
