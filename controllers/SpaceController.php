@@ -28,7 +28,7 @@ class SpaceController extends ContentContainerController
     return [
       'communitystream' => [
         'class' => CommunitiesContentContainerStream::class,
-        'contentContainerIds' => isset($_GET["ids"]) ? $_GET["ids"] : "",
+        'contentContainerIds' => isset($_GET["child_ids"]) ? $_GET["child_ids"] : array(),
       ],
     ];
   }

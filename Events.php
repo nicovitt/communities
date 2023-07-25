@@ -87,7 +87,7 @@ class Events
       'group' => 'manage',
       'icon' => '<i class="fa fa-sitemap"></i>',
       'isActive' =>
-        Yii::$app->controller->module &&
+      Yii::$app->controller->module &&
         Yii::$app->controller->module->id == 'communities' &&
         Yii::$app->controller->id == 'admin',
       'sortOrder' => 99999,
@@ -127,7 +127,7 @@ class Events
         'group' => 'manage',
         'icon' => '<i class="fa fa-sitemap"></i>',
         'isActive' =>
-          Yii::$app->controller->module &&
+        Yii::$app->controller->module &&
           Yii::$app->controller->module->id == 'communities' &&
           Yii::$app->controller->id == 'admin',
         'sortOrder' => 99999,
@@ -152,15 +152,14 @@ class Events
 
     // Check if contentcontainerid has children in communities db-table
     $contentcontainerids = [];
-    $communities = Community::findAll([
-      'parent_id' => $event->sender->contentContainer->guid,
-    ]);
+    array_push($contentcontainerids, $event->sender->contentContainer->guid);
+    $communities = Community::find()->where(['parent_id' => $event->sender->contentContainer->guid])->all();
     if (count($communities) > 0) {
+      // If contentcontainer has children a custom streamviewer with events from children should be returned
       foreach ($communities as $community) {
-        // If so integrate events from children in stream
         array_push($contentcontainerids, $community->child_id);
       }
-      $event->sender->streamActionParams["ids"] = $contentcontainerids;
+      $event->sender->streamActionParams["child_ids"] = $contentcontainerids;
       $event->sender->streamAction = urlManager::toModifiedStreamAction();
     }
 
