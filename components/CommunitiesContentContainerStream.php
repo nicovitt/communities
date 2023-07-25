@@ -30,8 +30,8 @@ class CommunitiesContentContainerStream extends ContentContainerStream
     {
         // $space = Space::find()->where(["guid" => $this->contentContainerIds[0]])->one();
         // $options['container'] = $space->getContentContainerRecord();
-        // $this->contentContainer = $space;
         // $streamarray = new ActiveQuery(Content::class);
+        // $this->contentContainer = $$this->contentContainerIds[0];
         // $parentquery = parent::initQuery($options);
 
         if (is_array($this->contentContainerIds)) {
