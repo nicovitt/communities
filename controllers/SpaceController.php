@@ -11,6 +11,7 @@ use humhub\modules\space\models\Space;
 use VittITServices\humhub\modules\communities\models\forms\SpaceSettingsForm;
 use VittITServices\humhub\modules\communities\components\CommunitiesContentContainerStream;
 use VittITServices\humhub\modules\communities\components\CommunityDirectoryQuery;
+use VittITServices\humhub\modules\communities\actions\CommunityStreamAction;
 
 class SpaceController extends ContentContainerController
 {
@@ -27,7 +28,7 @@ class SpaceController extends ContentContainerController
   {
     return [
       'communitystream' => [
-        'class' => CommunitiesContentContainerStream::class,
+        'class' => CommunityStreamAction::class,
         'contentContainerIds' => isset($_GET["child_ids"]) ? $_GET["child_ids"] : array(),
       ],
     ];

@@ -5,6 +5,7 @@ namespace VittITServices\humhub\modules\communities;
 use Yii;
 use yii\helpers\Url;
 use humhub\modules\space\models\Space;
+use VittITServices\humhub\modules\communities\filters\CommunityStreamFilter;
 use VittITServices\humhub\modules\communities\permissions\ManageCommunities;
 
 class Module extends \humhub\components\Module
@@ -43,5 +44,22 @@ class Module extends \humhub\components\Module
         }
 
         return [];
+    }
+
+    /**
+     * Dashboard stream query filter class used for members of the network
+     * @var string
+     * @since 1.8
+     */
+    public $memberFilterClass = CommunityStreamFilter::class;
+
+    /**
+     * @return static
+     */
+    public static function getModuleInstance()
+    {
+        /* @var $module static */
+        $module = Yii::$app->getModule('communities');
+        return $module;
     }
 }

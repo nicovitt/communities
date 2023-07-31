@@ -8,6 +8,8 @@
 
 namespace VittITServices\humhub\modules\communities\models;
 
+use Yii;
+use VittITServices\humhub\modules\communities\Module;
 use humhub\modules\stream\models\ContentContainerStreamQuery;
 
 /**
@@ -20,10 +22,19 @@ use humhub\modules\stream\models\ContentContainerStreamQuery;
  */
 class CommunityStreamQuery extends ContentContainerStreamQuery
 {
+
+    /**
+     * @var string[]
+     */
+    public $contentContainerIds;
+
     protected function beforeApplyFilters()
     {
         parent::beforeApplyFilters();
-    }
 
-    //TODO: Make correct query for all ids
+        $this->addFilterHandler(Yii::createObject([
+            'class' => Module::getModuleInstance()->memberFilterClass,
+            'contentContainerIds' => $this->contentContainerIds
+        ]));
+    }
 }
