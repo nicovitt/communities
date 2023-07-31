@@ -1,11 +1,11 @@
 <?php
 
-namespace VittITServices\humhub\modules\communities\widgets;
+namespace VittDigital\humhub\modules\communities\widgets;
 
 use humhub\components\Widget;
 use humhub\modules\space\models\Space;
 use Yii;
-use VittITServices\humhub\modules\communities\models\Community;
+use VittDigital\humhub\modules\communities\models\Community;
 use humhub\modules\space\models\Membership;
 
 /**

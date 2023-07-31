@@ -1,6 +1,6 @@
 <?php
 
-namespace VittITServices\humhub\modules\communities\controllers;
+namespace VittDigital\humhub\modules\communities\controllers;
 
 use Yii;
 use yii\helpers\Url;
@@ -8,10 +8,10 @@ use humhub\components\Controller;
 use humhub\modules\content\widgets\richtext\RichText;
 use humhub\modules\content\components\ContentContainerController;
 use humhub\modules\space\models\Space;
-use VittITServices\humhub\modules\communities\models\forms\SpaceSettingsForm;
-use VittITServices\humhub\modules\communities\components\CommunitiesContentContainerStream;
-use VittITServices\humhub\modules\communities\components\CommunityDirectoryQuery;
-use VittITServices\humhub\modules\communities\actions\CommunityStreamAction;
+use VittDigital\humhub\modules\communities\models\forms\SpaceSettingsForm;
+use VittDigital\humhub\modules\communities\components\CommunitiesContentContainerStream;
+use VittDigital\humhub\modules\communities\components\CommunityDirectoryQuery;
+use VittDigital\humhub\modules\communities\actions\CommunityStreamAction;
 
 class SpaceController extends ContentContainerController
 {

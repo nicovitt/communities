@@ -1,8 +1,8 @@
 <?php
 
-namespace VittITServices\humhub\modules\communities\models\forms;
+namespace VittDigital\humhub\modules\communities\models\forms;
 
-use VittITServices\humhub\modules\communities\models\Community;
+use VittDigital\humhub\modules\communities\models\Community;
 use humhub\modules\space\models\Space;
 use yii\base\Model;
 use Yii;

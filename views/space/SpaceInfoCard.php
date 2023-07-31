@@ -1,11 +1,12 @@
 <?php
+
 /**
  * @link https://www.humhub.org/
  * @copyright Copyright (c) 2021 HumHub GmbH & Co. KG
  * @license https://www.humhub.com/licences
  */
 
-namespace VittITServices\humhub\modules\communities\views\space;
+namespace VittDigital\humhub\modules\communities\views\space;
 
 use humhub\components\Widget;
 use humhub\modules\space\models\Space;
@@ -40,5 +41,4 @@ class SpaceInfoCard extends Widget
 
         return str_replace('{card}', $card, $this->template);
     }
-
 }

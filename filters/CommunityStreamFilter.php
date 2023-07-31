@@ -1,6 +1,6 @@
 <?php
 
-namespace VittITServices\humhub\modules\communities\filters;
+namespace VittDigital\humhub\modules\communities\filters;
 
 use Yii;
 use Yii\db\Query;

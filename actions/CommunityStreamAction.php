@@ -1,13 +1,13 @@
 <?php
 
-namespace VittITServices\humhub\modules\communities\actions;
+namespace VittDigital\humhub\modules\communities\actions;
 
 use Yii;
 use humhub\modules\space\models\Space;
 use humhub\modules\stream\actions\ContentContainerStream;
 use humhub\modules\content\widgets\stream\WallStreamEntryOptions;
-use VittITServices\humhub\modules\communities\models\CommunityStreamQuery;
-use VittITServices\humhub\modules\communities\filters\CommunityStreamFilter;
+use VittDigital\humhub\modules\communities\models\CommunityStreamQuery;
+use VittDigital\humhub\modules\communities\filters\CommunityStreamFilter;
 
 class CommunityStreamAction extends ContentContainerStream
 {

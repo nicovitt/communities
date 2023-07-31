@@ -9,22 +9,22 @@ use humhub\modules\space\widgets\SpaceDirectoryStatus;
 use humhub\modules\space\widgets\SpaceDirectoryTagList;
 use humhub\modules\space\widgets\SpaceDirectoryCard;
 use yii\web\View;
-use VittITServices\humhub\modules\communities\widgets\CommunitiesDirectoryCard;
+use VittDigital\humhub\modules\communities\widgets\CommunitiesDirectoryCard;
 
 /* @var $this View */
 /* @var $space Space */
 ?>
 
 <div class="card-panel<?php if (
-  $space->isArchived()
-): ?> card-archived<?php endif; ?>">
-    <div class="card-body">
-        <strong class="card-title"><?= Html::containerLink($space) ?></strong>
-        <?= SpaceDirectoryTagList::widget([
-          'space' => $space,
-          'template' => '<div class="card-tags">{tags}</div>',
-        ]) ?>
-    </div>
+                        $space->isArchived()
+                      ) : ?> card-archived<?php endif; ?>">
+  <div class="card-body">
+    <strong class="card-title"><?= Html::containerLink($space) ?></strong>
+    <?= SpaceDirectoryTagList::widget([
+      'space' => $space,
+      'template' => '<div class="card-tags">{tags}</div>',
+    ]) ?>
+  </div>
 </div>
 
 <!-- <div class="subcards subcards-container" style="display: flex; flex-direction: column;"> -->

@@ -6,13 +6,13 @@
  * @license https://www.humhub.com/licences
  */
 
-namespace VittITServices\humhub\modules\communities\components;
+namespace VittDigital\humhub\modules\communities\components;
 
 use humhub\events\ActiveQueryEvent;
 use humhub\modules\user\components\ActiveQueryUser;
 use humhub\modules\user\models\User;
 use humhub\modules\user\Module;
-use VittITServices\humhub\modules\communities\models\Community;
+use VittDigital\humhub\modules\communities\models\Community;
 use Yii;
 use yii\db\ActiveQuery;
 

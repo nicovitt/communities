@@ -1,6 +1,6 @@
 <?php
 
-namespace VittITServices\humhub\modules\communities\assets;
+namespace VittDigital\humhub\modules\communities\assets;
 
 use yii\web\AssetBundle;
 

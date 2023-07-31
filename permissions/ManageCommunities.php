@@ -7,7 +7,7 @@
  *
  */
 
-namespace VittITServices\humhub\modules\communities\permissions;
+namespace VittDigital\humhub\modules\communities\permissions;
 
 
 use humhub\libs\BasePermission;

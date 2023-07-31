@@ -1,14 +1,14 @@
 <?php
 
-namespace VittITServices\humhub\modules\communities\widgets;
+namespace VittDigital\humhub\modules\communities\widgets;
 
 use humhub\components\Widget;
 use humhub\modules\space\models\Space;
-use VittITServices\humhub\modules\communities\models\Community;
+use VittDigital\humhub\modules\communities\models\Community;
 
 /**
  * Class CommunitiesDirectoryCard
- * @package VittITServices\humhub\modules\communities\widgets
+ * @package VittDigital\humhub\modules\communities\widgets
  */
 class CommunitiesDirectoryCard extends Widget
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace VittITServices\humhub\modules\communities;
+namespace VittDigital\humhub\modules\communities;
 
 use Yii;
 use yii\base\Event;
@@ -8,11 +8,11 @@ use yii\helpers\Url;
 use humhub\modules\space\models\Space;
 use humhub\modules\ui\menu\MenuLink;
 use humhub\modules\stream\widgets\StreamViewer;
-use VittITServices\humhub\modules\communities\models\Community;
-use VittITServices\humhub\modules\communities\helpers\Url as urlManager;
+use VittDigital\humhub\modules\communities\models\Community;
+use VittDigital\humhub\modules\communities\helpers\Url as urlManager;
 use humhub\libs\WidgetCreateEvent;
-use VittITServices\humhub\modules\communities\widgets\CommunitiesChooser;
-use VittITServices\humhub\modules\communities\widgets\CommunitiesDirectoryCard;
+use VittDigital\humhub\modules\communities\widgets\CommunitiesChooser;
+use VittDigital\humhub\modules\communities\widgets\CommunitiesDirectoryCard;
 use yii\base\ActionEvent;
 
 class Events

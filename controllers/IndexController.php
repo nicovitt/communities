@@ -1,12 +1,12 @@
 <?php
 
-namespace VittITServices\humhub\modules\communities\controllers;
+namespace VittDigital\humhub\modules\communities\controllers;
 
 use Yii;
 use yii\helpers\Url;
 use humhub\components\Controller;
 use humhub\modules\content\components\ContentContainerController;
-use VittITServices\humhub\modules\communities\components\CommunityDirectoryQuery;
+use VittDigital\humhub\modules\communities\components\CommunityDirectoryQuery;
 use humhub\modules\space\components\SpaceDirectoryQuery;
 
 class IndexController extends Controller

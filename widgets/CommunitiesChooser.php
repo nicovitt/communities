@@ -1,6 +1,6 @@
 <?php
 
-namespace VittITServices\humhub\modules\communities\widgets;
+namespace VittDigital\humhub\modules\communities\widgets;
 
 use humhub\components\Widget;
 use humhub\modules\content\components\ContentContainerController;
@@ -17,11 +17,11 @@ use yii\db\Query;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use humhub\modules\space\widgets\Image;
-use VittITServices\humhub\modules\communities\models\Community;
+use VittDigital\humhub\modules\communities\models\Community;
 
 /**
  * Class CommunitiesChooser
- * @package VittITServices\humhub\modules\communities\widgets
+ * @package VittDigital\humhub\modules\communities\widgets
  */
 class CommunitiesChooser extends Widget
 {

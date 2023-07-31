@@ -1,6 +1,6 @@
 <?php
 
-use VittITServices\humhub\modules\communities\Events;
+use VittDigital\humhub\modules\communities\Events;
 use humhub\modules\admin\widgets\AdminMenu;
 use humhub\widgets\TopMenu;
 use humhub\components\Widget;
@@ -13,8 +13,8 @@ use humhub\modules\space\controllers\SpacesController;
 
 return [
   'id' => 'communities',
-  'class' => 'VittITServices\humhub\modules\communities\Module',
-  'namespace' => 'VittITServices\humhub\modules\communities',
+  'class' => 'VittDigital\humhub\modules\communities\Module',
+  'namespace' => 'VittDigital\humhub\modules\communities',
   'events' => [
     [
       'class' => ModuleManager::class,

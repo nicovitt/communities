@@ -6,10 +6,10 @@
  * @license https://www.humhub.com/licences
  */
 
-namespace VittITServices\humhub\modules\communities\models;
+namespace VittDigital\humhub\modules\communities\models;
 
 use Yii;
-use VittITServices\humhub\modules\communities\Module;
+use VittDigital\humhub\modules\communities\Module;
 use humhub\modules\stream\models\ContentContainerStreamQuery;
 
 /**

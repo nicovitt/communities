@@ -1,12 +1,12 @@
 <?php
 
-namespace VittITServices\humhub\modules\communities;
+namespace VittDigital\humhub\modules\communities;
 
 use Yii;
 use yii\helpers\Url;
 use humhub\modules\space\models\Space;
-use VittITServices\humhub\modules\communities\filters\CommunityStreamFilter;
-use VittITServices\humhub\modules\communities\permissions\ManageCommunities;
+use VittDigital\humhub\modules\communities\filters\CommunityStreamFilter;
+use VittDigital\humhub\modules\communities\permissions\ManageCommunities;
 
 class Module extends \humhub\components\Module
 {

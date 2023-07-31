@@ -6,11 +6,11 @@
  * @license https://www.humhub.com/licences
  */
 
-namespace VittITServices\humhub\modules\communities\components;
+namespace VittDigital\humhub\modules\communities\components;
 
-use VittITServices\humhub\modules\communities\components\ActiveQueryCommunity;
+use VittDigital\humhub\modules\communities\components\ActiveQueryCommunity;
 use humhub\modules\space\models\Space;
-use VittITServices\humhub\modules\communities\models\Community;
+use VittDigital\humhub\modules\communities\models\Community;
 use Yii;
 use yii\data\Pagination;
 

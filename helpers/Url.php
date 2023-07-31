@@ -1,6 +1,6 @@
 <?php
 
-namespace VittITServices\humhub\modules\communities\helpers;
+namespace VittDigital\humhub\modules\communities\helpers;
 
 
 /**

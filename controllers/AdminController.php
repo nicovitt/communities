@@ -1,6 +1,6 @@
 <?php
 
-namespace VittITServices\humhub\modules\communities\controllers;
+namespace VittDigital\humhub\modules\communities\controllers;
 
 use humhub\modules\admin\components\Controller;
 
@@ -16,6 +16,4 @@ class AdminController extends Controller
     {
         return $this->render('index');
     }
-
 }
-

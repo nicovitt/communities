@@ -6,13 +6,13 @@
  * @license https://www.humhub.com/licences
  */
 
-namespace VittITServices\humhub\modules\communities\models;
+namespace VittDigital\humhub\modules\communities\models;
 
 use humhub\modules\content\components\ContentContainerActiveRecord;
 use humhub\modules\space\components\UrlValidator;
 use humhub\modules\search\interfaces\Searchable;
 use humhub\modules\space\models\Space;
-use VittITServices\humhub\modules\communities\components\ActiveQueryCommunity;
+use VittDigital\humhub\modules\communities\components\ActiveQueryCommunity;
 use yii\db\ActiveRecord;
 use Yii;
 
@@ -36,7 +36,7 @@ class Community extends ActiveRecord
      * @var string id of the space
      */
     // public $child_id;
-    
+
     /**
      * @var string id of the parents space
      */

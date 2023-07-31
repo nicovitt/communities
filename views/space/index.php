@@ -1,5 +1,5 @@
 <?php
-/* @var $model VittITServices\humhub\modules\communities\models\forms\SpaceSettingsForm */
+/* @var $model VittDigital\humhub\modules\communities\models\forms\SpaceSettingsForm */
 
 use humhub\modules\space\models\Space;
 use humhub\modules\space\modules\manage\widgets\DefaultMenu;
